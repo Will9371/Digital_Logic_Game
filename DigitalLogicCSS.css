@@ -1,0 +1,121 @@
+h1 { text-align: left;  position: absolute; left: 300px;}   
+#orSelect { background-image:url("orGate.png"); }    
+#norSelect { background-image:url("norGate.png"); }      
+#andSelect { background-image:url("andGate.png"); }
+#nandSelect { background-image:url("nandGate.png"); }
+#xorSelect { background-image:url("xorGate.png"); }
+#notSelect { background-image:url("notGate.png"); }
+#connectSelect { background-image:url("connect.png"); }
+#wireSelect { background-image:url("wire.png"); }
+#trashSelect { background-image:url("trash.png"); }
+#dragContainer { left: 80px; top: 80px; position: absolute; border-style: solid; }
+#selectorContainer { left: 490px; top: 84px; position: absolute; }   
+.dragSelect
+{
+    width: 56px;
+    height: 40px;
+    float: left;
+    margin-left: 10px;
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 0px;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+.widgetSelect
+{
+	width: 56px;
+    height: 32px;
+    border-width: 2px;
+    border-color: navy;
+    border-style: dotted;
+    padding: 10px;
+    float: left;
+    margin-left: 10px;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+}
+#widgetsCanvas
+{
+	position: absolute;
+    left: 20px;
+	top: 150px;
+    z-index: 0;
+}
+#lineCanvas
+{
+	position: absolute;
+    left: 20px;
+	top: 150px;
+    z-index: -1;
+}
+#gameCanvas
+{
+	position: absolute;
+    left: 900px;
+    top: 50px;
+    border-style: solid;
+}
+#teslaCanvas
+{
+	position: absolute;
+    left: 870px;
+    top: 595px;
+    z-index: -1;
+}
+#selectLevel
+{
+	position: absolute;
+    left: 1040px;
+    top: 330px;
+}
+#buttonAdvance
+{
+	position: absolute;
+    left: 1040px;
+    top: 560px;
+}
+#buttonRun
+{
+	position: absolute;
+    left: 1100px;
+    top: 560px;
+}
+#buttonReset
+{
+	position: absolute;
+    left: 1160px;
+    top: 560px;
+}
+#results
+{
+	position: absolute;
+    left: 1040px;
+    top: 80px;
+    width: 220px;
+    height: 240px;
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+}
+#textResult
+{
+	text-indent: 0px;
+	font-weight: bold;
+    font-size: 20px;
+}
+#textStat
+{
+	text-indent: 0px;
+	font-weight: normal;
+    font-size: 16px;
+}
+#textMessage
+{
+	text-indent: 0px;
+    font-weight: normal;
+    font-size: 16px;
+}
+

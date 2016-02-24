@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="DigitalLogicCSS.css">
+	<meta charset="utf-8">
+    <title>Zombie Gates!</title>
+</head>
+<body>
+	<h1>Zombie Gates!</h1>
+    <div id="dragContainer" ondragstart="startDrag(event)">
+    	<div class="dragSelect" id="orSelect" draggable="true" title="OR"></div>
+        <div class="dragSelect" id="norSelect" draggable="true" title="NOR"></div>
+        <div class="dragSelect" id="andSelect" draggable="true" title="AND"></div>
+        <div class="dragSelect" id="nandSelect" draggable="true" title="NAND"></div>
+        <div class="dragSelect" id="xorSelect" draggable="true" title="XOR"></div>
+    	<div class="dragSelect" id="notSelect" draggable="true" title="NOT"></div>     
+    </div>
+ 	<div id="selectorContainer" onmousedown="toolsClickHandler(event)">
+        <div class="widgetSelect" id="connectSelect" title="Connector"></div>
+        <div class="widgetSelect" id="wireSelect" title="Wire"></div>
+        <div class="widgetSelect" id="trashSelect" title="Trash"></div>
+        <div class="widgetSelect" id="clearSelect">Clear</div> 
+    </div>
+    <canvas id="widgetsCanvas" width="850" height="520"
+    		onclick="widgetsClickHandler(event)" onmousedown="lineMouseDown(event)"
+            ondragover="allowDrag(event)" ondrop="dropWidget(event)"></canvas>
+    <canvas id="lineCanvas" width="850" height="520"></canvas>
+    <canvas id="gameCanvas" width="120" height="600"></canvas>
+    <canvas id="teslaCanvas" width="180" height="30"></canvas>
+    <select id="selectLevel" width="40" height="20"  onchange="levelChange(event)"></select>
+    <button id="buttonAdvance" type="button" onclick="advance()">Step</button>
+    <button id="buttonRun" type="button" onclick="runGame()">Run</button>
+    <button id="buttonReset" type="button" onclick="reset()">Reset</button>
+    <div id="results">
+    	<p id="textResult"></p>
+        <p id="textStats"></p>
+        <p id="textMessage"></p>
+    </div>
+    <audio id="zapSound" src="zap.wav"></audio>
+    <script src="Challenges.js"></script>
+    <script src="Game.js"></script>
+    <script src="Globals.js"> </script>
+    <script src="LogicGates.js"> </script>
+    <script src="DigitalLogicJS.js"> </script>
+    <script src="DragAndDrop.js"> </script>
+    <script src="LineDrawCreate.js"> </script>
+</body>
+</html>
