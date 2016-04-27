@@ -1,6 +1,6 @@
 function lineMouseDown(event)   //called when user clicks
 {                               //ERROR: lineMouseDown undefined in Internet Explorer
-    if(wireSetting == true)     //start wire
+    if(wireSetting == true && event.which <=1)     //start wire #restricts wire placement to left click only.
     {
         if (tool != typeWire)   //this function only relevant for wires
             return;
@@ -115,12 +115,10 @@ function createWire()
     newWire.rect = new rectangle(rX, rY, rW, rH);       //clickable area of wire
     newWire.tips[0] = new tip(startX, startY, flowOff, newWire, stateDisconnect); //create 2 tips, 1 at start and 1 at end of wire
     newWire.tips[1] = new tip(endX, endY, flowOff, newWire, stateDisconnect); 
-    if(event.which <= 1)           //Only create the wire if user lef-clicks (otherwise cancel)
-    {
-        connect(newWire);          //connect tips of new wire to tips of existing gates and wires, if applicable
-        widgetArray.push(newWire); //add new wire to list of existing wires in the game
-        refresh();
-    }  
+
+	connect(newWire);          //connect tips of new wire to tips of existing gates and wires, if applicable
+	widgetArray.push(newWire); //add new wire to list of existing wires in the game
+	refresh();
 }
 
 
