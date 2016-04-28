@@ -238,44 +238,43 @@ function setXorState(xGate)
 
 function setTerminalState(t)    //The terminal is the final output and used for the tesla coil
 {                               //the terminal acts like a one-directional wire (diode)
-    //t.tips[0].state -> RED, t.tips[1].state -> GREEN, t.tips[2].state -> BLUE, t.tips[3].state -> OUTPUT
-    if (t.tips[0].state == stateOn && t.tips[1].state != stateOn && t.tips[2].state != stateOn)
+    if (t.tips[Color.RED].state == stateOn && t.tips[Color.GREEN].state != stateOn && t.tips[Color.BLUE].state != stateOn)
     {   //If ONLY the RED output is on (green and blue are either off or disconnected) -> RED
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = stateRed;
     }
-    else if (t.tips[0].state != stateOn && t.tips[1].state == stateOn && t.tips[2].state != stateOn)
+    else if (t.tips[Color.RED].state != stateOn && t.tips[Color.GREEN].state == stateOn && t.tips[Color.BLUE].state != stateOn)
     {   //If ONLY the GREEN output is on -> GREEN
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = stateGreen;
     }
-    else if (t.tips[0].state != stateOn && t.tips[1].state != stateOn && t.tips[2].state == stateOn)
+    else if (t.tips[Color.RED].state != stateOn && t.tips[Color.GREEN].state != stateOn && t.tips[Color.BLUE].state == stateOn)
     {   //If ONLY the BLUE output is on -> BLUE
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = stateBlue;
     }
-    else if (t.tips[0].state == stateOn && t.tips[1].state == stateOn && t.tips[2].state != stateOn)
+    else if (t.tips[Color.RED].state == stateOn && t.tips[Color.GREEN].state == stateOn && t.tips[Color.BLUE].state != stateOn)
     {   //If RED and GREEN outputs are on -> YELLOW
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = stateYellow;
     }
-    else if (t.tips[0].state == stateOn && t.tips[1].state != stateOn && t.tips[2].state == stateOn)
+    else if (t.tips[Color.RED].state == stateOn && t.tips[Color.GREEN].state != stateOn && t.tips[Color.BLUE].state == stateOn)
     {   //If RED and BLUE outputs are on -> PURPLE
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = statePurple;
     }
-    else if (t.tips[0].state != stateOn && t.tips[1].state == stateOn && t.tips[2].state == stateOn)
+    else if (t.tips[Color.RED].state != stateOn && t.tips[Color.GREEN].state == stateOn && t.tips[Color.BLUE].state == stateOn)
     {   //If GREEN and BLUE outputs are on -> TEAL
         t.tips[3].state = stateOn;
         t.state = stateOn;
         widgetArray[4].color = stateTeal;
     }
-    else if (t.tips[0].state == stateOn && t.tips[1].state == stateOn && t.tips[2].state == stateOn)
+    else if (t.tips[Color.RED].state == stateOn && t.tips[Color.GREEN].state == stateOn && t.tips[Color.BLUE].state == stateOn)
     {   //If RED, GREEN, and BLUE outputs are on -> WHITE
         t.tips[3].state = stateOn;
         t.state = stateOn;

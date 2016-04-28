@@ -2,6 +2,11 @@ var savedTarget = null;
 var gameRunning = false;
 var advanceRow = 0;
 var wireSetting = true;
+var Color = {
+    RED: 0,
+    GREEN: 1,
+    BLUE: 2
+};
 //var sleeping = false;
 
 var tool = 0;           //wire, connect, or trash (or also includes gates?)
