@@ -488,7 +488,7 @@ function levelChange(event)
     drawCreatureGrid(rectGame.height - 93, startRow);
     enableGates();
     disableGates();
-    //changing level does not clear the screen...feature or oversight?  Keep for now.
+    clearScreen();
 }
 
 function drawCreatureGrid(startY, startRow)
