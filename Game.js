@@ -1,5 +1,5 @@
 var creatureImage = new Image();
-creatureImage.src = "creatures.png";
+creatureImage.src = "images/creatures.png";
 
 var teslaFrameWidth = 0;
 

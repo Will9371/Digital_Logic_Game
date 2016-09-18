@@ -78,37 +78,28 @@ var rectGame = cvsGame.getBoundingClientRect();
 
 var widgetArray  = [];          //start with no widgets in array
 
-var inputImage = new Image();   //create images for gates
-inputImage.src = "input.png";
-var notImage = new Image();
-notImage.src = "onOffNot.png";
-var andImage = new Image();
-andImage.src = "onOffAnd.png";
-var nandImage = new Image();
-nandImage.src = "onOffNand.png";
-var orImage = new Image();
-orImage.src = "onOffOr.png";
-var norImage = new Image();
-norImage.src = "onOffNor.png";
-var xorImage = new Image();
-xorImage.src = "onOffXor.png";
-var terminalImage = new Image();
-terminalImage.src = "onOffTerminal.png";
-
-var teslaImageRed = new Image();    //create images for the zapping electricity
-teslaImageRed.src = "teslaRed.png";
-var teslaImageGreen = new Image();
-teslaImageGreen.src = "teslaGreen.png";
-var teslaImageBlue = new Image();
-teslaImageBlue.src = "teslaBlue.png";
-var teslaImageYellow = new Image();
-teslaImageYellow.src = "teslaYellow.png";
-var teslaImagePurple = new Image();
-teslaImagePurple.src = "teslaPurple.png";
-var teslaImageTeal = new Image();
-teslaImageTeal.src = "teslaTeal.png";
-var teslaImageWhite = new Image();
-teslaImageWhite.src = "teslaWhite.png";
+function createImage(src) {
+    var img = new Image();
+    img.src = "images/" + src;
+    return img;
+}
+var inputImage = createImage("input.png");
+var notImage = createImage("onOffNot.png");
+var andImage = createImage("onOffAnd.png");
+var nandImage = createImage("onOffNand.png");
+var orImage = createImage("onOffOr.png");
+var norImage = createImage("onOffNor.png");
+var xorImage = createImage("onOffXor.png");
+var terminalImage = createImage("onOffTerminal.png");
+    
+//create images for the zapping electricity
+var teslaImageRed = createImage("teslaRed.png");
+var teslaImageGreen = createImage("teslaGreen.png");
+var teslaImageBlue = createImage("teslaBlue.png");
+var teslaImageYellow = createImage("teslaYellow.png");
+var teslaImagePurple = createImage("teslaPurple.png");
+var teslaImageTeal = createImage("teslaTeal.png");
+var teslaImageWhite = createImage("teslaWhite.png");
 
 inputImage.addEventListener("load", startupHandler, false);     //when game loads, call startup functions
 terminalImage.addEventListener("load", createTerminal, false);
