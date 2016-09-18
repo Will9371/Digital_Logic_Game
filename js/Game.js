@@ -3,7 +3,7 @@ creatureImage.src = "images/creatures.png";
 
 var teslaFrameWidth = 0;
 
-var zapSound = new Audio("zap.wav"); 
+var zapSound = new Audio("audio/zap.wav"); 
 
 var curChallenge = [];
 var startRow = 0;

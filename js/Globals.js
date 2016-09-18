@@ -78,11 +78,13 @@ var rectGame = cvsGame.getBoundingClientRect();
 
 var widgetArray  = [];          //start with no widgets in array
 
-function createImage(src) {
+function createImage(src)
+{
     var img = new Image();
     img.src = "images/" + src;
     return img;
 }
+//create images for gates
 var inputImage = createImage("input.png");
 var notImage = createImage("onOffNot.png");
 var andImage = createImage("onOffAnd.png");
@@ -91,7 +93,7 @@ var orImage = createImage("onOffOr.png");
 var norImage = createImage("onOffNor.png");
 var xorImage = createImage("onOffXor.png");
 var terminalImage = createImage("onOffTerminal.png");
-    
+
 //create images for the zapping electricity
 var teslaImageRed = createImage("teslaRed.png");
 var teslaImageGreen = createImage("teslaGreen.png");
