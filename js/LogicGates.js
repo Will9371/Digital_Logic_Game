@@ -1,131 +1,80 @@
 function createAnd(x, y)	//create an object of type "andGate"
 {
-    var newAndGate = null;
-
-    var halfHeight = andImage.height / 2;    //used for placement of input tips
-    var quarterHeight = andImage.height / 4; //at 1/4 and 3/4 up left side of gate
-    var imageWidth = andImage.width / 2;     //and an output tip 1/2 the right side
-    var imageHeight = andImage.height;
-    
-    newAndGate = new andGate();
-    newAndGate.tips = [];
-    newAndGate.rect = new rectangle(x, y, imageWidth, imageHeight);
-    newAndGate.tips[0] = new tip(x, y + quarterHeight, flowIn, newAndGate, stateDisconnect);
-    newAndGate.tips[1] = new tip(x, y + halfHeight + quarterHeight, flowIn, newAndGate, stateDisconnect);
-    newAndGate.tips[2] = new tip(x + imageWidth, y + halfHeight, flowOut, newAndGate, stateOff);
-
-    connect(newAndGate);            //check for connections to existing gates and wires
-    newAndGate.draw();              //draw the and gate
-    widgetArray.push(newAndGate);   //and add it to the list of existing widgets
+    var newAndGate = createThreeTipGate(x, y, andImage, andGate, stateOff);
+    widgetArray.push(newAndGate);   //add it to the list of existing widgets
 }
 
 function createNand(x, y)	//create an object of type "nandGate"
 {
-    var newNandGate = null;                     //0. Create an object
-    
-    var halfHeight = nandImage.height / 2;      //1. Determine tip locations
-    var quarterHeight = nandImage.height / 4;
-    var imageWidth = nandImage.width / 2;
-    var imageHeight = nandImage.height;
-    
-    newNandGate = new nandGate();
-    newNandGate.state = stateOn;                //2. Set the gate's initial state
-    newNandGate.tips = [];
-    newNandGate.rect = new rectangle(x, y, imageWidth, imageHeight);    //3. Create the bounding rectandle
-    newNandGate.tips[0] = new tip(x, y + quarterHeight, flowIn, newNandGate, stateDisconnect);  //4. Create the tips
-    newNandGate.tips[1] = new tip(x, y + halfHeight + quarterHeight, flowIn, newNandGate, stateDisconnect);
-    newNandGate.tips[2] = new tip(x + imageWidth, y + halfHeight, flowOut, newNandGate, stateOn);
-    connect(newNandGate);                       //5. Check for connections
-    newNandGate.draw();                         //6. Draw the gate
-    widgetArray.push(newNandGate);              //7. Add to list
+    var newNandGate = createThreeTipGate(x, y, nandImage, nandGate, stateOn);
+    widgetArray.push(newNandGate); 
 }
 
 function createOr(x, y)	
 {
-    var newOrGate = null;
-    
-    var halfHeight = orImage.height / 2;
-    var quarterHeight = orImage.height / 4;
-    var imageWidth = orImage.width / 2;
-    var imageHeight = orImage.height;
-    
-    newOrGate = new orGate();
-    newOrGate.tips = [];
-    newOrGate.rect = new rectangle(x, y, imageWidth, imageHeight);
-    newOrGate.tips[0] = new tip(x, y + quarterHeight, flowIn, newOrGate, stateDisconnect);
-    newOrGate.tips[1] = new tip(x, y + halfHeight + quarterHeight, flowIn, newOrGate, stateDisconnect);    
-    newOrGate.tips[2] = new tip(x + imageWidth, y + halfHeight, flowOut, newOrGate, stateOff);
-    
-    newOrGate.state = stateOff;
-    connect(newOrGate);
-    newOrGate.draw();
+    var newOrGate = createThreeTipGate(x, y, orImage, orGate, stateOff);
     widgetArray.push(newOrGate);
 }
 
 function createNor(x, y)	
 {
-    var newNorGate = null;
-    
-    var halfHeight = norImage.height / 2;
-    var quarterHeight = norImage.height / 4;
-    var imageWidth = norImage.width / 2;
-    var imageHeight = norImage.height;
-    
-    newNorGate = new norGate();
-    newNorGate.tips = [];
-    newNorGate.rect = new rectangle(x, y, imageWidth, imageHeight);
-    newNorGate.tips[0] = new tip(x, y + quarterHeight, flowIn, newNorGate, stateDisconnect);
-    newNorGate.tips[1] = new tip(x, y + halfHeight + quarterHeight, flowIn, newNorGate, stateDisconnect);    
-    newNorGate.tips[2] = new tip(x + imageWidth, y + halfHeight, flowOut, newNorGate, stateOn);
-    
-    newNorGate.state = stateOn;
-    connect(newNorGate);
-    newNorGate.draw();
+    var newNorGate = createThreeTipGate(x, y, norImage, norGate, stateOn);
     widgetArray.push(newNorGate);
 }
-
-function createXor(x, y)	
+function createXor(x, y)    
 {
-    var newXorGate = null;
-    
-    var halfHeight = xorImage.height / 2;
-    var quarterHeight = xorImage.height / 4;
-    var imageWidth = xorImage.width / 2;
-    var imageHeight = xorImage.height;
-    
-    newXorGate = new xorGate();
-    newXorGate.tips = [];
-    newXorGate.rect = new rectangle(x, y, imageWidth, imageHeight);
-    newXorGate.tips[0] = new tip(x, y + quarterHeight, flowIn, newXorGate, stateDisconnect);
-    newXorGate.tips[1] = new tip(x, y + halfHeight + quarterHeight, flowIn, newXorGate, stateDisconnect);    
-    newXorGate.tips[2] = new tip(x + imageWidth, y + halfHeight, flowOut, newXorGate, stateOff);
-    
-    newXorGate.state = stateOff;
-    connect(newXorGate);
-    newXorGate.draw();
+    var newXorGate = createThreeTipGate(x, y, xorImage, xorGate, stateOff);
     widgetArray.push(newXorGate);
 }
-
 //Add Xnor gate creation code here...
-
-function createNot(x, y) //create an object of type "notGate"
+function createNot(x, y)
 {
-    var newNotGate = null;
-    
-    var halfHeight = notImage.height / 2;
-    var imageWidth = notImage.width / 2;
-    var imageHeight = notImage.height;
-    
-    newNotGate = new notGate();
-    newNotGate.tips = [];
-    newNotGate.rect = new rectangle(x, y, imageWidth, imageHeight);
-    newNotGate.tips[0] = new tip(x, y + halfHeight, flowIn, newNotGate, stateDisconnect);
-    newNotGate.tips[1] = new tip(x + imageWidth, y + halfHeight, flowOut, newNotGate, stateOn);
-    newNotGate.state = stateOn;
-    connect(newNotGate);
-    newNotGate.draw();
+    var newNotGate = createTwoTipGate(x, y, notImage, notGate, stateOn);
     widgetArray.push(newNotGate);
 }
+
+function createThreeTipGate(x, y, image, Gate, startingState)
+{
+    /* used for placement of input tips at 1/4 and 3/4 up left side of gate and an output tip 1/2 the right side */
+    var imageHeight = image.height;
+    var imageWidth = image.width;
+
+    var quarterHeight = imageHeight / 4;
+    var halfHeight = imageHeight / 2;
+    var threeQuarterHeight = halfHeight + quarterHeight;
+    var halfWidth = imageWidth / 2;
+
+    var gate = new Gate();
+    gate.tips = [];
+    gate.rect = new rectangle(x, y, halfWidth, imageHeight);
+    gate.tips[0] = new tip(x, y + quarterHeight, flowIn, gate, stateDisconnect);
+    gate.tips[1] = new tip(x, y + threeQuarterHeight, flowIn, gate, stateDisconnect);    
+    gate.tips[2] = new tip(x + halfWidth, y + halfHeight, flowOut, gate, startingState);
+    connect(gate);  // Check for connections
+    gate.draw();
+
+    return gate;
+}
+
+function createTwoTipGate(x, y, image, Gate, startingState) 
+{    
+    var imageHeight = image.height;
+    var imageWidth = image.width;
+
+    var halfHeight = imageHeight / 2;
+    var halfWidth = imageWidth / 2;
+    
+    var gate = new Gate();
+    gate.tips = [];
+    gate.rect = new rectangle(x, y, halfWidth, imageHeight);
+    gate.tips[0] = new tip(x, y + halfHeight, flowIn, gate, stateDisconnect);
+    gate.tips[1] = new tip(x + halfWidth, y + halfHeight, flowOut, gate, startingState);
+    connect(gate);
+    gate.draw();
+    
+    return gate;
+}
+
 
 function setNotState(nGate) //argument: object instance
 {   //if 1 then 0, else 1
