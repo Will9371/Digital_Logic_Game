@@ -54,79 +54,35 @@ function loadTeslaImageWhite()
 }
 
 function enableGates()      //this function enables all of the logic gates in the game
+{    
+    enableGate("orSelect");
+    enableGate("norSelect");
+    enableGate("andSelect");
+    enableGate("nandSelect");
+    enableGate("xorSelect");
+    enableGate("notSelect");
+}
+function enableGate(gateName)
 {
-	var gate = null;
-    
-	gate = document.getElementById("orSelect");    //reference variable to html
-    gate.setAttribute("draggable", true);          //enable use of or gate
-    gate.style.opacity = "1.0";                    //and make it visible
-    
-    gate = document.getElementById("norSelect");   //repeat for all other gates
-    gate.setAttribute("draggable", true);
-    gate.style.opacity = "1.0";
-    
-    gate = document.getElementById("andSelect");
-    gate.setAttribute("draggable", true);
-    gate.style.opacity = "1.0";
-    
-    gate = document.getElementById("nandSelect");
-    gate.setAttribute("draggable", true);
-    gate.style.opacity = "1.0";
-    
-    gate = document.getElementById("xorSelect");
-    gate.setAttribute("draggable", true);
-    gate.style.opacity = "1.0";
-    
-    gate = document.getElementById("notSelect");
-    gate.setAttribute("draggable", true);
-    gate.style.opacity = "1.0";
+    var gate = document.getElementById(gateName);        
+    gate.setAttribute("draggable", true); //enable use of or gate
+    gate.style.opacity = "1.0"; //and make it visible
+}
+function disableGates()  //This function disables certain gates, based on Challenges array
+{    
+    if (disable[indexLevel][0] == 1) { disableGate("orSelect"); } 
+    if (disable[indexLevel][1] == 1) { disableGate("norSelect"); } 
+    if (disable[indexLevel][2] == 1) { disableGate("andSelect"); } 
+    if (disable[indexLevel][3] == 1) { disableGate("nandSelect"); } 
+    if (disable[indexLevel][4] == 1) { disableGate("xorSelect"); } 
+    if (disable[indexLevel][5] == 1) { disableGate("notSelect"); } 
 }
 
-function disableGates()  //This function disables certain gates, based on Challenges array
+function disableGate(gateName)
 {
-	var gate = null;
-    
-    gate = document.getElementById("orSelect");
-    if (disable[indexLevel][0] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
-    
-    gate = document.getElementById("norSelect");
-    if (disable[indexLevel][1] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
-    
-    gate = document.getElementById("andSelect");
-    if (disable[indexLevel][2] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
-    
-    gate = document.getElementById("nandSelect");
-    if (disable[indexLevel][3] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
-    
-    gate = document.getElementById("xorSelect");
-    if (disable[indexLevel][4] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
-    
-    gate = document.getElementById("notSelect");
-    if (disable[indexLevel][5] == 1)
-    {
-    	gate.setAttribute("draggable", false);
-    	gate.style.opacity = "0.1";
-    } 
+    var gate = document.getElementById(gateName);
+    gate.setAttribute("draggable", false);
+    gate.style.opacity = "0.1";
 }
 
 function drawTeslaOff()

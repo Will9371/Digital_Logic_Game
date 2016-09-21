@@ -1,3 +1,20 @@
+//Set the type and dimensions of the appropriate gate
+function setGateTypeAndDrag(type, image)
+{
+  gateType = type;
+  dragWidth = image.width / 2;
+  dragHeight = image.height;
+}
+var gateDrags =
+{
+  orSelect:   function() { setGateTypeAndDrag(typeOr, orImage); },
+  norSelect:  function() { setGateTypeAndDrag(typeNor, norImage); },
+  andSelect:  function() { setGateTypeAndDrag(typeAnd, andImage); },
+  nandSelect: function() { setGateTypeAndDrag(typeNand, nandImage); },
+  notSelect:  function() { setGateTypeAndDrag(typeNot, notImage); },
+  xorSelect:  function() { setGateTypeAndDrag(typeXor, xorImage); }
+}
+
 function startDrag(event)		//User has begun a drag of a gate image
 {   
     var offsetX = event.offsetX;
@@ -14,39 +31,10 @@ function startDrag(event)		//User has begun a drag of a gate image
     //console.log("clientX", event.clientX, "clientY", event.clientY);
     //console.log("OffsetX", offsetX, "OffsetY", offsetY); 
     //console.log("adjustX", offsetX - event.clientX, "adjustY", offsetY - event.clientY);
-    switch(event.target.id)     //Detemine which gate has been selected by the user
-    {
-        case "orSelect":
-			gateType = typeOr;  //Set the type and dimensions of the appropriate gate
-            dragWidth = orImage.width / 2;
-            dragHeight = orImage.height;
-            break;
-        case "norSelect":
-			gateType = typeNor;
-            dragWidth = norImage.width / 2;
-            dragHeight = norImage.height;
-            break;
-        case "andSelect":
-        	gateType = typeAnd;
-            dragWidth = andImage.width / 2;
-            dragHeight = andImage.height;
-            break;
-        case "nandSelect":
-        	gateType = typeNand;
-            dragWidth = nandImage.width / 2;
-            dragHeight = nandImage.height;
-            break;
-        case "notSelect":
-        	gateType = typeNot;
-            dragWidth = notImage.width / 2;
-            dragHeight = notImage.height;
-            break;
-        case "xorSelect":
-        	gateType = typeXor;
-            dragWidth = xorImage.width / 2;
-            dragHeight = xorImage.height;
-            break;
-    }
+
+    //Detemine which gate has been selected by the user
+    var selectedGate = event.target.id; 
+    if(selectedGate in gateDrags) { gateDrags[selectedGate]() }
 }
 
 function allowDrag(event)		//override default behavior which does not allow drag
@@ -98,36 +86,29 @@ function dropWidget(event)		//user has dropped a gate image on the canvas
         	//console.log("Unrecognized gate type = " + gateType);
     }
 }
-
+var gateXOffsets = 
+{ 
+  orSelect: 93,
+  norSelect: 159,
+  andSelect: 225,
+  nandSelect: 291,
+  xorSelect: 357,
+  notSelect: 423
+}
 function getOffsetX(event)
 {
   var offsetX;
   var gateType = event.target.id;
   console.log("gateType is", gateType);
-  switch(gateType)
+
+  if(gateType in gateXOffsets) 
   {
-    case "orSelect":
-      offsetX = event.clientX - 93;
-      break;
-    case "norSelect":
-      offsetX = event.clientX - 159;
-      break;
-    case "andSelect":
-      offsetX = event.clientX - 225;
-      break;
-    case "nandSelect":
-      offsetX = event.clientX - 291;
-      break;
-    case "xorSelect":
-      offsetX = event.clientX - 357;
-      break;
-    case "notSelect":
-      offsetX = event.clientX - 423;
-      break;
-    default:
-      console.log("unrecognized gate type");
+    offsetX = event.clientX - gateXOffsets[gateType]
   }
-  
+  else 
+  {
+    console.error("unrecognized gate type");
+  }
   return offsetX;
 }
 
